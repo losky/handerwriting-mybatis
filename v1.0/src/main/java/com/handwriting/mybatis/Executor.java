@@ -24,6 +24,8 @@ public class Executor {
     public <T> T query(String sql, Object[] args) {
         try (Connection connection = DriverManager.getConnection(datasource.getUrl(), datasource.getUsername(), datasource.getPassword())) {
             try (Statement statement = connection.createStatement()) {
+                statement.executeUpdate("create table blog(id    bigint       not null comment '主键' primary key,name  varchar(255) null,title varchar(255) null);\n");
+                statement.executeUpdate("insert into blog values (1,'哈哈','热门头条');");
                 try (ResultSet resultSet = statement.executeQuery(String.format(sql, args[0]))) {
                     while (resultSet.next()) {
                         Blog blog = new Blog();
