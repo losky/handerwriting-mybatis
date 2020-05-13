@@ -1,4 +1,4 @@
-package com.handwriting.mybatis;
+package com.handwriting.domain;
 
 /**
  * @author ZhenZhong

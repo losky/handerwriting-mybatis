@@ -1,6 +1,8 @@
 package com.handwriting.mybatis;
 
+import javax.sql.DataSource;
 import java.lang.reflect.Proxy;
+import java.sql.DriverManager;
 import java.util.ResourceBundle;
 
 /**
@@ -8,14 +10,20 @@ import java.util.ResourceBundle;
  * @date 2020/5/13
  */
 public class Configuration {
-    private static final ResourceBundle resourceBundle;
+    private static final ResourceBundle sqlBinding;
+    private static final ResourceBundle datasource;
 
     static {
-        resourceBundle = ResourceBundle.getBundle("sql");
+        sqlBinding = ResourceBundle.getBundle("sql");
+        datasource = ResourceBundle.getBundle("datasource");
+    }
+
+    public DataSourceProperties getDatasource() {
+        return new DataSourceProperties(datasource);
     }
 
     public String getSql(String statementId) {
-        return resourceBundle.getString(statementId);
+        return sqlBinding.getString(statementId);
     }
 
     public <T> T getMapper(Class clazz, SqlSession sqlSession) {

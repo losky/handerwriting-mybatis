@@ -1,4 +1,6 @@
-package com.handwriting.mybatis;
+package com.handwriting.mapper;
+
+import com.handwriting.domain.Blog;
 
 /**
  * @author ZhenZhong

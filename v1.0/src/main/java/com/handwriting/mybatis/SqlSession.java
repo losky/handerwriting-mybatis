@@ -9,9 +9,9 @@ public class SqlSession {
     private final Configuration configuration;
     private final Executor executor;
 
-    public SqlSession(Configuration configuration, Executor executor) {
+    public SqlSession(Configuration configuration) {
         this.configuration = configuration;
-        this.executor = executor;
+        this.executor = new Executor(configuration.getDatasource());
     }
 
     public <T> T selectOne(String statementId, Object... args) {
